@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class Event : MonoBehaviour
 {
-    public SpriteRenderer spriterenderer;
+    public GameObject default_find_img;
+    //public SpriteRenderer spriterenderer;
     public KeyCode interactionKey = KeyCode.Space;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        default_find_img.SetActive(false);
     }
 
     // Update is called once per frame
@@ -23,7 +24,7 @@ public class Event : MonoBehaviour
     {
         GameObject target = collision.gameObject;
         if (!target.tag.Equals("GoPoint")) return;
-        spriterenderer.enabled = true;
+        default_find_img.SetActive(true);
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -38,6 +39,6 @@ public class Event : MonoBehaviour
     {
         GameObject target = collision.gameObject;
         if (!target.tag.Equals("GoPoint")) return;
-        spriterenderer.enabled = false;
+        default_find_img.SetActive(false);
     }
 }

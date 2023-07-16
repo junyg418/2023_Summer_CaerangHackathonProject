@@ -2539,7 +2539,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e47a84cb3f71a7479850dda3128d41c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriterenderer: {fileID: 1258504259}
+  default_find_img: {fileID: 1258504258}
   interactionKey: 32
 --- !u!61 &1579803713
 BoxCollider2D:
