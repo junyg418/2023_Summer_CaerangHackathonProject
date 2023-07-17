@@ -23,7 +23,8 @@ public class Event : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject target = collision.gameObject;
-        if (!target.tag.Equals("GoPoint")) return;
+        if (!target.tag.Equals("GoPoint")) 
+            return;
         default_find_img.SetActive(true);
     }
     private void OnTriggerStay2D(Collider2D collision)
@@ -33,12 +34,14 @@ public class Event : MonoBehaviour
         if (Input.GetKeyDown(interactionKey))
         {
             Debug.Log("æ∆¿Ã≈€");
+            Destroy(default_find_img);
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         GameObject target = collision.gameObject;
-        if (!target.tag.Equals("GoPoint")) return;
+        if (!target.tag.Equals("GoPoint")) 
+            return;
         default_find_img.SetActive(false);
     }
 }
