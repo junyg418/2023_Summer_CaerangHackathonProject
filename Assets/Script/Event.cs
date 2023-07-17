@@ -34,7 +34,7 @@ public class Event : MonoBehaviour
         if (Input.GetKeyDown(interactionKey))
         {
             Debug.Log("æ∆¿Ã≈€");
-            Destroy(default_find_img);
+            Destroy(target);
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
