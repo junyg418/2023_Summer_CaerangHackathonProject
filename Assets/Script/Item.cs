@@ -6,7 +6,8 @@ using UnityEngine;
 public class Item : ScriptableObject
 {
     public string itemName;
-    public string price;
+    public string Tooltip;
+    public int price;
     public Sprite itemImage;
     // Start is called before the first frame update
     void Start()
