@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8e9d22c7967edb43b0a1c9352acd16d, type: 3}
   m_Name: bone
   m_EditorClassIdentifier: 
+  ID: 1
   itemName: "\uBF08"
   Tooltip: "\uAC15\uC544\uC9C0\uAC00 \uC228\uACA8\uB454 \uBF08"
   price: 0

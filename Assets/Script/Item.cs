@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public class Item : ScriptableObject
 {
+    public int ID;
     public string itemName;
     public string Tooltip;
     public int price;

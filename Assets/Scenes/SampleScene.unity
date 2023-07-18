@@ -3473,13 +3473,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items:
   - {fileID: 11400000, guid: 6ad6bcf5623ee0042bd6d66d852eab16, type: 2}
-  - {fileID: 11400000, guid: 37336a37cbf773b41a664b69addf8e41, type: 2}
-  - {fileID: 11400000, guid: 236bc113c84236f438b093ee8e3be3b1, type: 2}
-  - {fileID: 11400000, guid: 236bc113c84236f438b093ee8e3be3b1, type: 2}
-  - {fileID: 11400000, guid: 236bc113c84236f438b093ee8e3be3b1, type: 2}
-  - {fileID: 11400000, guid: 236bc113c84236f438b093ee8e3be3b1, type: 2}
-  - {fileID: 11400000, guid: 236bc113c84236f438b093ee8e3be3b1, type: 2}
-  - {fileID: 11400000, guid: 236bc113c84236f438b093ee8e3be3b1, type: 2}
+  - {fileID: 11400000, guid: 6ad6bcf5623ee0042bd6d66d852eab16, type: 2}
   slotParent: {fileID: 1104619204}
   slots:
   - {fileID: 84845185}

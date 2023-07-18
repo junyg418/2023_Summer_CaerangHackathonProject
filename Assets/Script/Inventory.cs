@@ -36,14 +36,17 @@ public class Inventory : MonoBehaviour
 
     public void AddItem(Item _item)
     {
+        Debug.Log("아이템 추가");
         if (items.Count < slots.Length)
         {
+            
             items.Add(_item);
             FreshSlot();
         }
         else
         {
-            print("슬롯이 가득 차 있습니다.");
+            print("슬롯이 가득 차 있습니다."); 
         }
+        
     }
 }

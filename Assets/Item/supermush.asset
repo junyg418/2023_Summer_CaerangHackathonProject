@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8e9d22c7967edb43b0a1c9352acd16d, type: 3}
   m_Name: supermush
   m_EditorClassIdentifier: 
+  ID: 3
   itemName: "\uBC84\uC12F"
   Tooltip: "\uC5B4\uB514\uC120\uAC00 \uB9CE\uC774 \uBCF8 \uBC84\uC12F\uC774\uB2E4"
   price: 100
