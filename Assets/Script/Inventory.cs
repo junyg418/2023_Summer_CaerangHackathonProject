@@ -10,6 +10,7 @@ public class Inventory : MonoBehaviour
     private Transform slotParent;
     [SerializeField]
     private Slot[] slots;
+    internal string text;
 
     private void OnValidate()
     {
@@ -36,7 +37,6 @@ public class Inventory : MonoBehaviour
 
     public void AddItem(Item _item)
     {
-        Debug.Log("아이템 추가");
         if (items.Count < slots.Length)
         {
             
