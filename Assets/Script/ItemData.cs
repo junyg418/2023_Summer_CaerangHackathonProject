@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu]
-public class Item : ScriptableObject
+public class ItemData : ScriptableObject
 {
     public int ID;
     public string itemName;
@@ -20,5 +20,10 @@ public class Item : ScriptableObject
     void Update()
     {
         
+    }
+
+    public void test()
+    {
+        Debug.Log("버튼 눌림");
     }
 }

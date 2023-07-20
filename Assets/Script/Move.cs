@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-
+[RequireComponent(typeof(Rigidbody2D))]
 public class Move : MonoBehaviour
 {
     Vector2 position;
@@ -11,17 +11,21 @@ public class Move : MonoBehaviour
 
     public Animator animator;
 
+    private Rigidbody2D rigidbody2D;
     void Start()
     {
+        rigidbody2D = GetComponent<Rigidbody2D>();
         position = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
+        float moveX = 0;
+        float moveY = 0;
         if (Input.GetKey(KeyCode.A))
         {
-            position.x -= Speed * Time.deltaTime;
+            moveX -= Speed;
             animator.SetBool("isleft", true);
         }
         else if (Input.GetKeyUp(KeyCode.A))
@@ -31,7 +35,7 @@ public class Move : MonoBehaviour
 
         if (Input.GetKey(KeyCode.D))
         {
-            position.x += Speed * Time.deltaTime;
+            moveX += Speed;
             animator.SetBool("isright", true);
         }
         else if (Input.GetKeyUp(KeyCode.D))
@@ -41,7 +45,7 @@ public class Move : MonoBehaviour
 
         if (Input.GetKey(KeyCode.W))
         {
-            position.y += Speed * Time.deltaTime;
+            moveY += Speed;
             animator.SetBool("isback", true);
         }
         else if (Input.GetKeyUp(KeyCode.W))
@@ -51,7 +55,7 @@ public class Move : MonoBehaviour
 
         if (Input.GetKey(KeyCode.S))
         {
-            position.y -= Speed * Time.deltaTime;
+            moveY -= Speed;
             animator.SetBool("isfront", true);
         }
         else if (Input.GetKeyUp(KeyCode.S))
@@ -59,7 +63,8 @@ public class Move : MonoBehaviour
             animator.SetBool("isfront", false);
         }
 
-        transform.position = position;
+        Vector2 moveVector = new Vector2(moveX, moveY);
+        rigidbody2D.AddForce(moveVector);
 
         Vector3 worldpos = Camera.main.WorldToViewportPoint(this.transform.position);
         if (worldpos.x < 0f) worldpos.x = 0f;
