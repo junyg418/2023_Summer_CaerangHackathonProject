@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlotBtn : MonoBehaviour
+public class Inventory : MonoBehaviour
 {
-    
+    [SerializeField]
+    private ItemData[] _items;
     // Start is called before the first frame update
     void Start()
     {

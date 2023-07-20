@@ -776,7 +776,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &142811622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4540,6 +4540,7 @@ GameObject:
   - component: {fileID: 1104619206}
   - component: {fileID: 1104619205}
   - component: {fileID: 1104619207}
+  - component: {fileID: 1104619208}
   m_Layer: 5
   m_Name: inven
   m_TagString: Untagged
@@ -4626,6 +4627,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f75354059abbbcd4d8c9f09e8303f85d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1104619208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1104619203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ebd5deaf1e58024c99dcd982f87eb17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _items: []
 --- !u!1 &1109330097
 GameObject:
   m_ObjectHideFlags: 0
