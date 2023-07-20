@@ -943,7 +943,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &142811622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7442,6 +7442,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   default_find_img: {fileID: 1258504258}
   interactionKey: 32
+  time_to_get_item: 3
 --- !u!61 &1579803713
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8513,7 +8514,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2067323765
 MonoBehaviour:
   m_ObjectHideFlags: 0
