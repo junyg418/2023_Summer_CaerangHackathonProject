@@ -63,7 +63,7 @@ public class GetItemEvent : MonoBehaviour
         while (isKeyHold)
         {
             float passed_time = Time.time - keyPressStartTime;
-            if (passed_time >= 3.0f)
+            if (passed_time >= time_to_get_item)
             {
                 Debug.Log("아이템 얻음!");
                 Destroy(target);
