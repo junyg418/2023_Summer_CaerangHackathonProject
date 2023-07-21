@@ -14,7 +14,7 @@ public class Move : MonoBehaviour
     private Rigidbody2D rigidbody2D;
     void Start()
     {
-        rigidbody2D = GetComponent<Rigidbody2D>();
+        rigidbody2D = GetComponent<Rigidbody2D>(); 
         position = transform.position;
     }
 
