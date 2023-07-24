@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,7 +11,7 @@ public class Inventory : MonoBehaviour
     [SerializeField]
     //public ItemData[] _items;
     private SaveInventory saveInventory = new SaveInventory();
-    private Dictionary<string, int> save_data;
+    private Dictionary<int, int> save_data = new Dictionary<int, int>();
 
     void Start()
     {
@@ -21,21 +22,17 @@ public class Inventory : MonoBehaviour
         }
 
         // ¿˙¿Âµ» µ•¿Ã≈Õ∞° ¿÷¿ª ∂ß
-//        if (saveInventory.LoadData())
-//        {
             save_data = saveInventory.inventory_data; // µÒº≈≥ ∏Æ «¸≈¬
-            save_data.Add("bone", 3);
-            var save_data_keys = new List<string>(save_data.Keys); // µÒº≈≥ ∏Æ¿« key ¿« πËø≠
+            save_data.Add(1, 3);
+            var save_data_keys = new List<int>(save_data.Keys); // µÒº≈≥ ∏Æ¿« key ¿« πËø≠
 
             int length = save_data.Count; // µÒº≈≥ ∏Æ¿« ±Ê¿Ã
-            for (int idx=0; idx < length; idx++)
-            {
-                objectsSlot[idx].SetActive(true);
-                Text child_text_component = transform.GetComponentInChildren<Text>();
-                child_text_component.text = string.Format("X {0}", save_data[save_data_keys[idx]]);
-            }
-  //      }
-
+        for (int idx = 0; idx < length; idx++)
+        {
+            GameObject current_slot = objectsSlot[idx];
+            current_slot.SetActive(true);
+            set_slot_count(current_slot, save_data_keys[idx]);
+        }
 
     }
 
@@ -43,6 +40,12 @@ public class Inventory : MonoBehaviour
     void Update()
     {
         
+    }
+    
+    private void set_slot_count(GameObject current_slot, int item_id)
+    {
+        TextMeshProUGUI child_text_component = current_slot.transform.GetComponentInChildren<TextMeshProUGUI>();
+        child_text_component.text = string.Format("X {0}", save_data[item_id]);
     }
 }
 
@@ -68,9 +71,9 @@ public class Inventory : MonoBehaviour
 //    }
 //}
 
-public class SaveInventory : MonoBehaviour
+public class SaveInventory
 {
-    public Dictionary<string, int> inventory_data = new Dictionary<string, int>();
+    public Dictionary<int, int> inventory_data = new Dictionary<int, int>();
     private string filePath;
 
     public void SaveData()
@@ -90,7 +93,7 @@ public class SaveInventory : MonoBehaviour
         {
             string jsonData = File.ReadAllText(filePath);
 
-            inventory_data = JsonUtility.FromJson<Dictionary<string, int>>(jsonData);
+            inventory_data = JsonUtility.FromJson<Dictionary<int, int>>(jsonData);
 
             Debug.Log("∫“∑Øø»");
             return true;
