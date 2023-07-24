@@ -68,6 +68,7 @@ public class GetItemEvent : MonoBehaviour
         while (isKeyHold)
         {
             float passed_time = Time.time - keyPressStartTime;
+            
 
             if (passed_time >= time_to_get_item)
             {
@@ -75,8 +76,8 @@ public class GetItemEvent : MonoBehaviour
                 Destroy(target);
                 yield break;
             }
-           
-            yield return new WaitForSeconds(0.1f);
+
+                yield return new WaitForSeconds(0.1f);
         }
     }
 }
