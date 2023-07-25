@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - GoPoint
+  - Slider
   layers:
   - Default
   - TransparentFX
