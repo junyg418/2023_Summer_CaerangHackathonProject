@@ -10,10 +10,13 @@ using UnityEngine.UI;
 public class Inventory : MonoBehaviour
 {
     [SerializeField]
-    //public ItemData[] _items;
+    public ItemData[] _items;
+    public GameObject information_object;
+
     private SaveInventory saveInventory = new SaveInventory();
     private Dictionary<int, int> save_data = new Dictionary<int, int>();
     private GameObject[] objectsSlot;
+
 
     private void Awake()
     {
@@ -38,7 +41,7 @@ public class Inventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+       
     }
     
     public void get_item()
