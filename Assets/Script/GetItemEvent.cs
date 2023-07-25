@@ -15,11 +15,13 @@ public class GetItemEvent : MonoBehaviour
     public Canvas canvas;
 
     private Rigidbody2D rb;
-    
+
+    public RandomItemPoint randomItemPoint;
 
     // Start is called before the first frame update
     void Start()
     {
+        //randomItemPoint = GameObject.Find("Spawn").GetComponent<RandomItemPoint>();
         default_find_img.SetActive(false);
         canvas.enabled = false;
         rb = GetComponent<Rigidbody2D>();
@@ -54,7 +56,7 @@ public class GetItemEvent : MonoBehaviour
         {
             StartCoroutine(ActiveObjcetForSecond(target));
         }
-    
+
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -77,13 +79,15 @@ public class GetItemEvent : MonoBehaviour
 
             if (slider.value == 1)
             {
+                
                 Debug.Log("아이템 얻음!");
                 Destroy(target);
+                randomItemPoint.Spawn();
                 yield break;
             }
-                yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.1f);
         }
     }
 }
-    
+
 
