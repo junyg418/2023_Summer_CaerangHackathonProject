@@ -6,6 +6,7 @@ TagManager:
   tags:
   - GoPoint
   - Inventory_slot
+  - Slider
   layers:
   - Default
   - TransparentFX
