@@ -93,6 +93,7 @@ public class Inventory : MonoBehaviour
             GameObject current_slot = objectsSlot[idx];
             current_slot.SetActive(true);
             set_slot_count(current_slot, save_data_keys[idx]);
+            set_slot_img(current_slot, save_data_keys[idx]);
         }
     }
     /// <summary>
@@ -107,7 +108,14 @@ public class Inventory : MonoBehaviour
     }
     private void set_slot_img(GameObject current_slot, int item_id)
     {
-
+        foreach(ItemData item in _items)
+        {
+            if(item.ID == item_id)
+            {
+                current_slot.GetComponent<Image>().sprite = item.itemImage;
+                break;
+            }
+        }
     }
     // information ฐüทร function
     private void set_information()
