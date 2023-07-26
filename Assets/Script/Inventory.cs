@@ -5,6 +5,7 @@ using System.Threading;
 using TMPro;
 using UnityEditorInternal;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using static UnityEditor.Progress;
 
@@ -91,9 +92,12 @@ public class Inventory : MonoBehaviour
         for (int idx = 0; idx < length; idx++)
         {
             GameObject current_slot = objectsSlot[idx];
+            int current_item_id = save_data_keys[idx];
+
             current_slot.SetActive(true);
-            set_slot_count(current_slot, save_data_keys[idx]);
-            set_slot_img(current_slot, save_data_keys[idx]);
+            set_slot_count(current_slot, current_item_id);
+            set_slot_img(current_slot, current_item_id);
+            set_slot_button(current_slot, current_item_id);
         }
     }
     /// <summary>
@@ -117,13 +121,26 @@ public class Inventory : MonoBehaviour
             }
         }
     }
+    private void set_slot_button(GameObject current_slot, int item_id)
+    {
+        GameObject slot_button_gameObject = current_slot.transform.GetChild(1).gameObject;
+        Button slot_button = slot_button_gameObject.GetComponent<Button>();
+        foreach(ItemData item in _items)
+        {
+            if(item.ID == item_id)
+            {
+                UnityAction<ItemData> buttonClickEventAction = new UnityAction<ItemData>(set_information);
+                slot_button.onClick.AddListener(() => buttonClickEventAction.Invoke(item));
+            }
+        }
+    }
     // information 관련 function
     private void set_information()
     {
-        set_information_text("");
-        set_information_toolTip("");
+        set_information_text("아이템");
+        set_information_toolTip("정보");
     }
-    private void set_information(ItemData item)
+    public void set_information(ItemData item)
     {
         set_information_text(item.itemName);
         set_information_toolTip(item.Tooltip);
