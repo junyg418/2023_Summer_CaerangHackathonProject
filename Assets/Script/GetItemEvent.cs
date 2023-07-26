@@ -34,6 +34,7 @@ public class GetItemEvent : MonoBehaviour
         {
             rb.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
             slider.value = 0;
+            canvas.enabled = false;
         }
     }
 
@@ -44,7 +45,6 @@ public class GetItemEvent : MonoBehaviour
             return;
 
         default_find_img.SetActive(true);
-        canvas.enabled = true;
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -73,6 +73,7 @@ public class GetItemEvent : MonoBehaviour
     {
         while (Input.GetKey(KeyCode.Space))
         {
+            canvas.enabled = true;
             rb.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
 
             slider.value += 0.001f;
@@ -83,6 +84,7 @@ public class GetItemEvent : MonoBehaviour
                 Debug.Log("아이템 얻음!");
                 Destroy(target);
                 randomItemPoint.Spawn();
+                canvas.enabled = false;
                 yield break;
             }
             yield return new WaitForSeconds(0.1f);
