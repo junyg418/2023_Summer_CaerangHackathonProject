@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8e9d22c7967edb43b0a1c9352acd16d, type: 3}
   m_Name: Bear
   m_EditorClassIdentifier: 
-  ID: 6
+  ID: 4
   itemName: "\uACF0\uC778\uD615"
   Tooltip: "\uC640! \uACF0\uC778\uD615\uC774\uB2E4!"
   price: 300

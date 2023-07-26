@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8e9d22c7967edb43b0a1c9352acd16d, type: 3}
   m_Name: Sap
   m_EditorClassIdentifier: 
-  ID: 2
+  ID: 0
   itemName: "\uBAA8\uC885\uC0BD"
   Tooltip: "\uB4B7\uB9C8\uB2F9\uC5D0\uC11C \uBC1C\uACAC \uB41C \uC0BD\uC774\uB2E4"
   price: 100
