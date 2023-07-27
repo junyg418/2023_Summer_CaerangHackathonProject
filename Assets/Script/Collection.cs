@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class Collection : MonoBehaviour
 {
-    public GameObject slot;
+    //public GameObject slot;
     public Image image;
     // Start is called before the first frame update
     void Start()
     {
-        image = slot.GetComponent<Image>();
+        image = image.GetComponent<Image>();
     }
 
     // Update is called once per frame
