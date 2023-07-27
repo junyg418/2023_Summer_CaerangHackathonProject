@@ -9,7 +9,7 @@ public class GetItemEvent : MonoBehaviour
 {
     public GameObject default_find_img;
     //public SpriteRenderer spriterenderer;
-    public KeyCode interactionKey = KeyCode.Space;
+    //public KeyCode interactionKey = KeyCode.Space;
 
     public Slider slider;
     public Canvas canvas;
@@ -18,7 +18,6 @@ public class GetItemEvent : MonoBehaviour
 
     public RandomItemPoint randomItemPoint;
 
-    // Start is called before the first frame update
     void Start()
     {
         //randomItemPoint = GameObject.Find("Spawn").GetComponent<RandomItemPoint>();
@@ -27,12 +26,11 @@ public class GetItemEvent : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (!Input.GetKey(KeyCode.Space))
         {
-            rb.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
+            rb.constraints = RigidbodyConstraints2D.None;// | RigidbodyConstraints2D.FreezeRotation;
             slider.value = 0;
             canvas.enabled = false;
         }
@@ -52,7 +50,7 @@ public class GetItemEvent : MonoBehaviour
         if (!target.tag.Equals("GoPoint"))
             return;
 
-        if (Input.GetKey(interactionKey))
+        if (Input.GetKey(KeyCode.Space))
         {
             StartCoroutine(ActiveObjcetForSecond(target));
         }
@@ -63,7 +61,7 @@ public class GetItemEvent : MonoBehaviour
         GameObject target = collision.gameObject;
         if (!target.tag.Equals("GoPoint"))
             return;
-        slider.value = 0;
+
 
         default_find_img.SetActive(false);
         canvas.enabled = false;
@@ -74,18 +72,18 @@ public class GetItemEvent : MonoBehaviour
         while (Input.GetKey(KeyCode.Space))
         {
             canvas.enabled = true;
-            rb.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
+            rb.constraints = RigidbodyConstraints2D.FreezePosition;// | RigidbodyConstraints2D.FreezeRotation;
 
             slider.value += 0.001f;
 
             if (slider.value == 1)
             {
-                
                 Debug.Log("아이템 얻음!");
+                slider.value = 0;
                 Destroy(target);
                 randomItemPoint.Spawn();
-                canvas.enabled = false;
-                yield break;
+                //yield break;
+                StopAllCoroutines();
             }
             yield return new WaitForSeconds(0.1f);
         }
