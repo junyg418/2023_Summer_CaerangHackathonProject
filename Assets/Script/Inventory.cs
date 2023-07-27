@@ -14,11 +14,11 @@ public class Inventory : MonoBehaviour
     [SerializeField]
     public ItemData[] _items;
     public GameObject information_object;
+    public GameObject money_object;
 
     private SaveInventory saveInventory = new SaveInventory();
     private Dictionary<int, int> save_data = new Dictionary<int, int>();
     private GameObject[] objectsSlot;
-
 
     private void Awake()
     {
@@ -33,14 +33,18 @@ public class Inventory : MonoBehaviour
         }
 
         // 저장된 데이터가 있을 때
-        if(saveInventory.LoadData())
+        if (saveInventory.LoadData())
+            Debug.Log("저장된 데이터가 있어 불러왔습니다");
             save_data = saveInventory.inventory_data; // 딕셔너리 형태
-        save_data.Add(1, 3);
-        save_data.Add(2, 6);
+        Debug.Log(JsonUtility.ToJson(save_data));
+        saveInventory.SaveData(save_data);
         init_slot();
 
         // information init
         set_information();
+
+        // current_moeny init
+        set_currentMoney_text();
     }
 
     // Update is called once per frame
@@ -158,6 +162,13 @@ public class Inventory : MonoBehaviour
 
         information_toolTip_gameObject.GetComponent<Text>().text = input_text;
     }
+
+
+// money_text 관련
+    private void set_currentMoney_text(int money_count=0)
+    {
+
+    }
 }
 
 
@@ -165,12 +176,24 @@ public class SaveInventory
 {
     public Dictionary<int, int> inventory_data = new Dictionary<int, int>();
     private string filePath;
+    private class CustomDictionary
+    {
+        public List<int> keys;
+        public List<int> values;
+    }
+
 
     public void SaveData(Dictionary<int, int> save_dict)
     {
-        string jsonData = JsonUtility.ToJson(save_dict);
+        CustomDictionary data = new CustomDictionary
+        {
+            keys = new List<int>(save_dict.Keys),
+            values = new List<int>(save_dict.Values)
+        };
 
-        filePath = Path.Combine(Application.persistentDataPath, "data.json");
+        string jsonData = JsonUtility.ToJson(data);
+        Debug.Log(jsonData);
+        filePath = Path.Combine("./", "data.json");
         File.WriteAllText(filePath, jsonData);
 
         Debug.Log("저장됨");
@@ -178,12 +201,15 @@ public class SaveInventory
 
     public bool LoadData()
     {
-        filePath = Path.Combine(Application.persistentDataPath, "data.json");
+        filePath = Path.Combine("./", "data.json");
         if (File.Exists(filePath))
         {
             string jsonData = File.ReadAllText(filePath);
 
-            inventory_data = JsonUtility.FromJson<Dictionary<int, int>>(jsonData);
+            CustomDictionary tmp_dic = JsonUtility.FromJson<CustomDictionary>(jsonData);
+
+            for(int i=0; i<tmp_dic.values.Count; i++)
+                inventory_data[tmp_dic.keys[i]] = tmp_dic.values[i];
 
             Debug.Log("불러옴");
             return true;
