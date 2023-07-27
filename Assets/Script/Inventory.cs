@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Net.Http.Headers;
 using System.Threading;
 using TMPro;
 using UnityEditorInternal;
@@ -22,7 +23,7 @@ public class Inventory : MonoBehaviour
 
     private void Awake()
     {
-        objectsSlot = GameObject.FindGameObjectsWithTag("Inventory_slot"); // slot ¹è¿­mw
+        objectsSlot = GameObject.FindGameObjectsWithTag("Inventory_slot"); // slot ï¿½è¿­mw
     }
     void Start()
     {
@@ -32,11 +33,9 @@ public class Inventory : MonoBehaviour
             obj.SetActive(false);
         }
 
-        // ÀúÀåµÈ µ¥ÀÌÅÍ°¡ ÀÖÀ» ¶§
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
         if(saveInventory.LoadData())
-            save_data = saveInventory.inventory_data; // µñ¼Å³Ê¸® ÇüÅÂ
-        save_data.Add(1, 3);
-        save_data.Add(2, 6);
+            save_data = saveInventory.inventory_data; // ï¿½ï¿½Å³Ê¸ï¿½ ï¿½ï¿½ï¿½ï¿½
         init_slot();
 
         // information init
@@ -46,29 +45,29 @@ public class Inventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {  
-
+            
     }
     
     public void get_item()
     {
         int randomInt = Random.Range(1, 101);
 
-        // »À´Ù±Í 50%
+        // ï¿½ï¿½ï¿½Ù±ï¿½ 50%
         if (1 <= randomInt && randomInt < 50)
             append_item_to_inventoryData(1);
-        // ¹ö¼¸ 30%
+        // ï¿½ï¿½ï¿½ï¿½ 30%
         else if (50 <= randomInt && randomInt < 80)
             append_item_to_inventoryData(2);
         else if (50 <= randomInt && randomInt < 101)
-            Debug.Log("3¹ø ¶¹À½");
+            Debug.Log("3ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
             //append_item_to_inventory(3);
 
         init_slot();
     }
     /// <summary>
-    /// ÀÎº¥Åä¸®¿¡ ¾ÆÀÌÅÛ Ãß°¡ÇÏ´Â ÀÛ¾÷
+    /// ï¿½Îºï¿½ï¿½ä¸®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ï¿½Ï´ï¿½ ï¿½Û¾ï¿½
     /// </summary>
-    /// <param name="item_id">¾ÆÀÌÅÛÀÇ id ¸¦ ÀÔ·Â¹ÞÀ½</param>
+    /// <param name="item_id">ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ id ï¿½ï¿½ ï¿½Ô·Â¹ï¿½ï¿½ï¿½</param>
     private void append_item_to_inventoryData(int item_id)
     {
         if (save_data.ContainsKey(item_id))
@@ -82,13 +81,13 @@ public class Inventory : MonoBehaviour
             save_data[item_id] = 1;
     }
     /// <summary>
-    /// slot ÃÊ±âÈ­ÇÏ´Â function
+    /// slot ï¿½Ê±ï¿½È­ï¿½Ï´ï¿½ function
     /// </summary>
     private void init_slot()
     {
-        var save_data_keys = new List<int>(save_data.Keys); // µñ¼Å³Ê¸®ÀÇ key ÀÇ ¹è¿­
+        var save_data_keys = new List<int>(save_data.Keys); // ï¿½ï¿½Å³Ê¸ï¿½ï¿½ï¿½ key ï¿½ï¿½ ï¿½è¿­
 
-        int length = save_data.Count; // µñ¼Å³Ê¸®ÀÇ ±æÀÌ
+        int length = save_data.Count; // ï¿½ï¿½Å³Ê¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         for (int idx = 0; idx < length; idx++)
         {
             GameObject current_slot = objectsSlot[idx];
@@ -101,10 +100,10 @@ public class Inventory : MonoBehaviour
         }
     }
     /// <summary>
-    /// slotÀÇ ¾ÆÀÌÅÛ °³¼ö¸¦ ÃÊ±âÈ­ÇØÁÖ´Â function
+    /// slotï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­ï¿½ï¿½ï¿½Ö´ï¿½ function
     /// </summary>
-    /// <param name="current_slot">ÇöÀç slot</param>
-    /// <param name="item_id">¾ÆÀÌÅÛÀÇ id</param>
+    /// <param name="current_slot">ï¿½ï¿½ï¿½ï¿½ slot</param>
+    /// <param name="item_id">ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ id</param>
     private void set_slot_count(GameObject current_slot, int item_id)
     {
         TextMeshProUGUI child_text_component = current_slot.transform.GetComponentInChildren<TextMeshProUGUI>();
@@ -134,11 +133,12 @@ public class Inventory : MonoBehaviour
             }
         }
     }
-    // information °ü·Ã function
+
+    // information ï¿½ï¿½ï¿½ï¿½ function
     private void set_information()
     {
-        set_information_text("¾ÆÀÌÅÛ");
-        set_information_toolTip("Á¤º¸");
+        set_information_text("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+        set_information_toolTip("ï¿½ï¿½ï¿½ï¿½");
     }
     public void set_information(ItemData item)
     {
@@ -158,6 +158,13 @@ public class Inventory : MonoBehaviour
 
         information_toolTip_gameObject.GetComponent<Text>().text = input_text;
     }
+
+
+    // money_text ï¿½ï¿½ï¿½ï¿½
+    private void set_currentMoney_text(int money_count = 0)
+    {
+
+    }
 }
 
 
@@ -165,33 +172,61 @@ public class SaveInventory
 {
     public Dictionary<int, int> inventory_data = new Dictionary<int, int>();
     private string filePath;
+    private class CustomDictionary
+    {
+        public List<int> keys;
+        public List<int> values;
+    }
 
     public void SaveData(Dictionary<int, int> save_dict)
     {
-        string jsonData = JsonUtility.ToJson(save_dict);
+        CustomDictionary data = new CustomDictionary
+        {
+            keys = new List<int>(save_dict.Keys),
+            values = new List<int>(save_dict.Values)
+        };
 
-        filePath = Path.Combine(Application.persistentDataPath, "data.json");
+        string jsonData = JsonUtility.ToJson(data);
+        Debug.Log(jsonData);
+        filePath = Path.Combine("./", "data.json");
         File.WriteAllText(filePath, jsonData);
 
-        Debug.Log("ÀúÀåµÊ");
+        Debug.Log("ì €ìž¥ ì„±ê³µ");
     } 
 
     public bool LoadData()
     {
-        filePath = Path.Combine(Application.persistentDataPath, "data.json");
+        filePath = Path.Combine("./", "data.json");
         if (File.Exists(filePath))
         {
             string jsonData = File.ReadAllText(filePath);
 
-            inventory_data = JsonUtility.FromJson<Dictionary<int, int>>(jsonData);
+            CustomDictionary tmp_dic = JsonUtility.FromJson<CustomDictionary>(jsonData);
 
-            Debug.Log("ºÒ·¯¿È");
+            for (int i = 0; i < tmp_dic.values.Count; i++)
+                inventory_data[tmp_dic.keys[i]] = tmp_dic.values[i];
+
+            Debug.Log("ì €ìž¥ ì„±ê³µ");
             return true;
         }
         else
         {
-            Debug.Log("ÀúÀåµÈ ÆÄÀÏÀÌ ¾øÀ½");
+            Debug.Log("ì €ìž¥ ì‹¤íŒ¨");
             return false;
         }
+    }
+
+    public int[] LoadID()
+    {
+        filePath = Path.Combine("./", "data.json");
+        if (File.Exists(filePath))
+        {
+            string jsonData = File.ReadAllText(filePath);
+
+            CustomDictionary id_data = JsonUtility.FromJson<CustomDictionary>(jsonData);
+            return id_data.keys.ToArray();
+        }
+        else
+            return new int[0];
     }
 }
