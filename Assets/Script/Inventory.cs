@@ -17,6 +17,7 @@ public class Inventory : MonoBehaviour
     public GameObject information_object;
     public GameObject currentMoney_text_object;
 
+    private int _current_money = 0;
     private SaveInventory saveInventory = new SaveInventory();
     private Dictionary<int, int> save_data = new Dictionary<int, int>();
     private GameObject[] objectsSlot;
@@ -158,9 +159,10 @@ public class Inventory : MonoBehaviour
 
 
     // money_text 초기화
-    private void set_currentMoney_text(int money_count = 0)
+    private void set_currentMoney_text()
     {
-
+        Text text_componet = currentMoney_text_object.GetComponent<Text>();
+        text_componet.text = string.Format("$ : {0, 6}", _current_money);
     }
 }
 
