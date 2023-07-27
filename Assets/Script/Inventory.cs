@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Net.Http.Headers;
 using System.Threading;
 using TMPro;
 using UnityEditorInternal;
@@ -50,7 +51,7 @@ public class Inventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {  
-
+            
     }
     
     public void get_item()
@@ -138,6 +139,7 @@ public class Inventory : MonoBehaviour
             }
         }
     }
+
     // information 관련 function
     private void set_information()
     {
@@ -164,8 +166,8 @@ public class Inventory : MonoBehaviour
     }
 
 
-// money_text 관련
-    private void set_currentMoney_text(int money_count=0)
+    // money_text 관련
+    private void set_currentMoney_text(int money_count = 0)
     {
 
     }
@@ -219,5 +221,19 @@ public class SaveInventory
             Debug.Log("저장된 파일이 없음");
             return false;
         }
+    }
+
+    public int[] LoadID()
+    {
+        filePath = Path.Combine("./", "data.json");
+        if (File.Exists(filePath))
+        {
+            string jsonData = File.ReadAllText(filePath);
+
+            CustomDictionary id_data = JsonUtility.FromJson<CustomDictionary>(jsonData);
+            return id_data.keys.ToArray();
+        }
+        else
+            return new int[0];
     }
 }
