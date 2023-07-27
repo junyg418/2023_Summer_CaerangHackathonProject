@@ -15,6 +15,7 @@ public class Inventory : MonoBehaviour
     [SerializeField]
     public ItemData[] _items;
     public GameObject information_object;
+    public GameObject currentMoney_text_object;
 
     private SaveInventory saveInventory = new SaveInventory();
     private Dictionary<int, int> save_data = new Dictionary<int, int>();
@@ -40,6 +41,8 @@ public class Inventory : MonoBehaviour
 
         // information init
         set_information();
+
+        set_currentMoney_text();
     }
 
     // Update is called once per frame
@@ -154,7 +157,7 @@ public class Inventory : MonoBehaviour
     }
 
 
-    // money_text ����
+    // money_text 초기화
     private void set_currentMoney_text(int money_count = 0)
     {
 
