@@ -23,7 +23,7 @@ public class Inventory : MonoBehaviour
 
     private void Awake()
     {
-        objectsSlot = GameObject.FindGameObjectsWithTag("Inventory_slot"); // slot �迭mw
+        objectsSlot = GameObject.FindGameObjectsWithTag("Inventory_slot"); // slot 배열
     }
     void Start()
     {
@@ -33,9 +33,9 @@ public class Inventory : MonoBehaviour
             obj.SetActive(false);
         }
 
-        // ����� �����Ͱ� ���� ��
+        // 저장된 데이터 있을 시 불러오기
         if(saveInventory.LoadData())
-            save_data = saveInventory.inventory_data; // ��ųʸ� ����
+            save_data = saveInventory.inventory_data; // 데이터 덮어쓰기
         init_slot();
 
         // information init
@@ -59,15 +59,11 @@ public class Inventory : MonoBehaviour
         else if (50 <= randomInt && randomInt < 80)
             append_item_to_inventoryData(2);
         else if (50 <= randomInt && randomInt < 101)
-            Debug.Log("3�� ����");
+            Debug.Log("3번 얻음");
             //append_item_to_inventory(3);
 
         init_slot();
     }
-    /// <summary>
-    /// �κ��丮�� ������ �߰��ϴ� �۾�
-    /// </summary>
-    /// <param name="item_id">�������� id �� �Է¹���</param>
     private void append_item_to_inventoryData(int item_id)
     {
         if (save_data.ContainsKey(item_id))
@@ -81,13 +77,13 @@ public class Inventory : MonoBehaviour
             save_data[item_id] = 1;
     }
     /// <summary>
-    /// slot �ʱ�ȭ�ϴ� function
+    /// slot init function
     /// </summary>
     private void init_slot()
     {
-        var save_data_keys = new List<int>(save_data.Keys); // ��ųʸ��� key �� �迭
+        var save_data_keys = new List<int>(save_data.Keys); // 인벤에 있는 item의 id
 
-        int length = save_data.Count; // ��ųʸ��� ����
+        int length = save_data.Count; // 아이템 개수
         for (int idx = 0; idx < length; idx++)
         {
             GameObject current_slot = objectsSlot[idx];
@@ -100,10 +96,8 @@ public class Inventory : MonoBehaviour
         }
     }
     /// <summary>
-    /// slot�� ������ ������ �ʱ�ȭ���ִ� function
+    /// slot 아이탬 개수 초기화 function
     /// </summary>
-    /// <param name="current_slot">���� slot</param>
-    /// <param name="item_id">�������� id</param>
     private void set_slot_count(GameObject current_slot, int item_id)
     {
         TextMeshProUGUI child_text_component = current_slot.transform.GetComponentInChildren<TextMeshProUGUI>();
@@ -137,8 +131,8 @@ public class Inventory : MonoBehaviour
     // information ���� function
     private void set_information()
     {
-        set_information_text("������");
-        set_information_toolTip("����");
+        set_information_text("아이템");
+        set_information_toolTip("정보");
     }
     public void set_information(ItemData item)
     {
