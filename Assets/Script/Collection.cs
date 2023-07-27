@@ -10,7 +10,7 @@ public class Collection : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        image = image.GetComponent<Image>();
+        image = image.GetComponent<Image>() ;
     }
 
     // Update is called once per frame
