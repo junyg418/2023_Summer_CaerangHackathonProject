@@ -36,8 +36,6 @@ public class Inventory : MonoBehaviour
         // ����� �����Ͱ� ���� ��
         if(saveInventory.LoadData())
             save_data = saveInventory.inventory_data; // ��ųʸ� ����
-        save_data.Add(1, 3);
-        save_data.Add(2, 6);
         init_slot();
 
         // information init
@@ -174,32 +172,46 @@ public class SaveInventory
 {
     public Dictionary<int, int> inventory_data = new Dictionary<int, int>();
     private string filePath;
+    private class CustomDictionary
+    {
+        public List<int> keys;
+        public List<int> values;
+    }
 
     public void SaveData(Dictionary<int, int> save_dict)
     {
-        string jsonData = JsonUtility.ToJson(save_dict);
+        CustomDictionary data = new CustomDictionary
+        {
+            keys = new List<int>(save_dict.Keys),
+            values = new List<int>(save_dict.Values)
+        };
 
-        filePath = Path.Combine(Application.persistentDataPath, "data.json");
+        string jsonData = JsonUtility.ToJson(data);
+        Debug.Log(jsonData);
+        filePath = Path.Combine("./", "data.json");
         File.WriteAllText(filePath, jsonData);
 
-        Debug.Log("�����");
+        Debug.Log("저장 성공");
     } 
 
     public bool LoadData()
     {
-        filePath = Path.Combine(Application.persistentDataPath, "data.json");
+        filePath = Path.Combine("./", "data.json");
         if (File.Exists(filePath))
         {
             string jsonData = File.ReadAllText(filePath);
 
-            inventory_data = JsonUtility.FromJson<Dictionary<int, int>>(jsonData);
+            CustomDictionary tmp_dic = JsonUtility.FromJson<CustomDictionary>(jsonData);
 
-            Debug.Log("�ҷ���");
+            for (int i = 0; i < tmp_dic.values.Count; i++)
+                inventory_data[tmp_dic.keys[i]] = tmp_dic.values[i];
+
+            Debug.Log("저장 성공");
             return true;
         }
         else
         {
-            Debug.Log("����� ������ ����");
+            Debug.Log("저장 실패");
             return false;
         }
     }
