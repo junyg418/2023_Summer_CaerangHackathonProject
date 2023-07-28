@@ -5,37 +5,31 @@ using UnityEngine.UI;
 
 public class Collection : MonoBehaviour
 {
-    public Transform[] allChildren;
-    public Image image;
+    public Image[] image = new Image[4];
+
+    //public Inventory inventory;
     
-    // Start is called before the first frame update
     void Start()
     {
-        allChildren = GetComponentsInChildren<Transform>();
-        foreach (Transform child in allChildren)
+        //inventory = FindObjectOfType<Inventory>();
+
+        for (int i = 0; i < image.Length; i++)
         {
-            if (child.name == transform.name)
-                return;
+            image[i].color = new Color(0.2f, 0.2f, 0.2f, 1);
 
-            Debug.Log(child.name);
         }
-
-        image = gameObject.GetComponent<Image>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.T))
-        {
-            color();
-        }
-            
+        if (Input.GetKeyDown(KeyCode.T))
+            color(0);
+        
     }
-
-    public void color()
+    public void color(int index)
     {
-        image.color = new Color(1, 1, 1);
+        image[index].color = new Color(1, 1, 1, 1);
     }
 
   
