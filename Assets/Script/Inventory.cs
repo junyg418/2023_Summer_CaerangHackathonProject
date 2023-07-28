@@ -22,7 +22,7 @@ public class Inventory : MonoBehaviour
     private Dictionary<int, int> save_data = new Dictionary<int, int>();
     private GameObject[] objectsSlot;
 
-
+    public Collection collection;
     private void Awake()
     {
         objectsSlot = GameObject.FindGameObjectsWithTag("Inventory_slot"); // slot 배열
@@ -68,8 +68,10 @@ public class Inventory : MonoBehaviour
 
         init_slot();
     }
-    private void append_item_to_inventoryData(int item_id)
+    public void append_item_to_inventoryData(int item_id)
     {
+        collection.color(item_id);
+
         if (save_data.ContainsKey(item_id))
         {
             if (save_data[item_id] >= 99)
@@ -79,6 +81,8 @@ public class Inventory : MonoBehaviour
         }
         else
             save_data[item_id] = 1;
+
+        
     }
     /// <summary>
     /// slot init function
