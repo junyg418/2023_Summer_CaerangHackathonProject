@@ -16,6 +16,7 @@ public class GetItemEvent : MonoBehaviour
 
     private Rigidbody2D rb;
 
+    public Inventory inventory;
     public RandomItemPoint randomItemPoint;
 
     void Start()
@@ -78,6 +79,7 @@ public class GetItemEvent : MonoBehaviour
 
             if (slider.value == 1)
             {
+                inventory.get_item();
                 Debug.Log("아이템 얻음!");
                 slider.value = 0;
                 Destroy(target);
