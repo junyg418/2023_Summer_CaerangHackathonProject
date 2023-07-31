@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8e9d22c7967edb43b0a1c9352acd16d, type: 3}
-  m_Name: Sap
+  m_Name: Apple
   m_EditorClassIdentifier: 
-  ID: 0
-  itemName: "\uBAA8\uC885\uC0BD"
-  Tooltip: "\uB4B7\uB9C8\uB2F9\uC5D0\uC11C \uBC1C\uACAC \uB41C \uC0BD\uC774\uB2E4"
-  price: 1000
-  itemImage: {fileID: 21300000, guid: 929a0a77150ca4e4eb3b3bc924978aed, type: 3}
+  ID: 5
+  itemName: "\uC0AC\uACFC"
+  Tooltip: "\uC544\uC9C1 \uB35C\uC775\uC740 \uC0AC\uACFC"
+  price: 300
+  itemImage: {fileID: 21300000, guid: dfd310b82f14c254c82e8b1ff3f84a08, type: 3}

@@ -18,7 +18,7 @@ public class Inventory : MonoBehaviour
     public GameObject currentMoney_text_object;
     public Slider cntslider;
 
-    private int _current_money = 0;
+    private int _current_money = 500;
     private SaveInventory saveInventory = new SaveInventory();
     private Dictionary<int, int> save_data = new Dictionary<int, int>();
     private GameObject[] objectsSlot;
@@ -63,9 +63,12 @@ public class Inventory : MonoBehaviour
         // ���� 30%
         else if (50 <= randomInt && randomInt < 80)
             append_item_to_inventoryData(2);
-        else if (50 <= randomInt && randomInt < 101)
-            Debug.Log("3번 얻음");
-            //append_item_to_inventory(3);
+        else if (80 <= randomInt && randomInt < 90)
+            append_item_to_inventoryData(3);
+        else if (90 <= randomInt && randomInt < 95)
+            append_item_to_inventoryData(4);
+        else if (95 <= randomInt && randomInt < 101)
+            append_item_to_inventoryData(5);
 
         init_slot();
     }
@@ -170,9 +173,9 @@ public class Inventory : MonoBehaviour
 
     private void set_information_price(int input_text)
     {
-        string text = input_text.ToString();
-        GameObject information_toolTip_gameObject = information_object.transform.GetChild(2).gameObject;
-        information_toolTip_gameObject.GetComponent<Text>().text = text;
+        string text = input_text.ToString()+"$";
+        GameObject information_price_gameObject = information_object.transform.GetChild(2).gameObject;
+        information_price_gameObject.GetComponent<Text>().text = text;
         
     }
 
