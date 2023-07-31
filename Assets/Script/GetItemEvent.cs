@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -82,12 +83,19 @@ public class GetItemEvent : MonoBehaviour
                 inventory.get_item();
                 Debug.Log("아이템 얻음!");
                 slider.value = 0;
+                delate_pos_data(target);
                 Destroy(target);
                 randomItemPoint.Spawn();
                 StopAllCoroutines();
             }
             yield return new WaitForSeconds(0.1f);
         }
+    }
+
+    private void delate_pos_data(GameObject target)
+    {
+        Vector3 pos = target.transform.position;
+        RandomItemPoint.point_pos_array.Remove(pos);
     }
 }
 
