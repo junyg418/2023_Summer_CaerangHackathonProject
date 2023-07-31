@@ -84,7 +84,6 @@ public class GetItemEvent : MonoBehaviour
                 slider.value = 0;
                 Destroy(target);
                 randomItemPoint.Spawn();
-                //yield break;
                 StopAllCoroutines();
             }
             yield return new WaitForSeconds(0.1f);

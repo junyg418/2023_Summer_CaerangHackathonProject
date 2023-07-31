@@ -8,7 +8,7 @@ using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
+//using static UnityEditor.Progress;
 
 public class Inventory : MonoBehaviour
 {
@@ -16,8 +16,9 @@ public class Inventory : MonoBehaviour
     public ItemData[] _items;
     public GameObject information_object;
     public GameObject currentMoney_text_object;
+    public Slider cntslider;
 
-    private int _current_money = 0;
+    private int _current_money = 500;
     private SaveInventory saveInventory = new SaveInventory();
     private Dictionary<int, int> save_data = new Dictionary<int, int>();
     private GameObject[] objectsSlot;
@@ -41,7 +42,7 @@ public class Inventory : MonoBehaviour
         init_slot();
 
         // information init
-        set_information();
+        //set_information();
 
         set_currentMoney_text();
     }
@@ -62,15 +63,18 @@ public class Inventory : MonoBehaviour
         // ���� 30%
         else if (50 <= randomInt && randomInt < 80)
             append_item_to_inventoryData(2);
-        else if (50 <= randomInt && randomInt < 101)
-            Debug.Log("3번 얻음");
-            //append_item_to_inventory(3);
+        else if (80 <= randomInt && randomInt < 90)
+            append_item_to_inventoryData(3);
+        else if (90 <= randomInt && randomInt < 95)
+            append_item_to_inventoryData(4);
+        else if (95 <= randomInt && randomInt < 101)
+            append_item_to_inventoryData(5);
 
         init_slot();
     }
     public void append_item_to_inventoryData(int item_id)
     {
-        collection.color(item_id);
+        
 
         if (save_data.ContainsKey(item_id))
         {
@@ -82,7 +86,9 @@ public class Inventory : MonoBehaviour
         else
             save_data[item_id] = 1;
 
-        
+        collection.color(item_id);
+
+
     }
     /// <summary>
     /// slot init function
@@ -137,15 +143,19 @@ public class Inventory : MonoBehaviour
     }
 
     // information ���� function
+    /*
     private void set_information()
     {
         set_information_text("아이템");
-        set_information_toolTip("정보");
+        set_information_toolTip("아이템 정보");
     }
+    */
     public void set_information(ItemData item)
     {
         set_information_text(item.itemName);
         set_information_toolTip(item.Tooltip);
+        set_information_price(item.price);
+        ItemCount(item.ID);
     }
     /// information function
     private void set_information_text(string input_text="")
@@ -161,12 +171,25 @@ public class Inventory : MonoBehaviour
         information_toolTip_gameObject.GetComponent<Text>().text = input_text;
     }
 
+    private void set_information_price(int input_text)
+    {
+        string text = input_text.ToString()+"$";
+        GameObject information_price_gameObject = information_object.transform.GetChild(2).gameObject;
+        information_price_gameObject.GetComponent<Text>().text = text;
+        
+    }
+
 
     // money_text 초기화
     private void set_currentMoney_text()
     {
         Text text_componet = currentMoney_text_object.GetComponent<Text>();
         text_componet.text = string.Format("$ : {0, 6}", _current_money);
+    }
+
+    public void ItemCount(int id)
+    {
+        cntslider.maxValue = save_data[id];
     }
 }
 
