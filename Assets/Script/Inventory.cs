@@ -41,7 +41,7 @@ public class Inventory : MonoBehaviour
         init_slot();
 
         // information init
-        set_information();
+        //set_information();
 
         set_currentMoney_text();
     }
@@ -137,15 +137,18 @@ public class Inventory : MonoBehaviour
     }
 
     // information ���� function
+    /*
     private void set_information()
     {
         set_information_text("아이템");
-        set_information_toolTip("정보");
+        set_information_toolTip("아이템 정보");
     }
+    */
     public void set_information(ItemData item)
     {
         set_information_text(item.itemName);
         set_information_toolTip(item.Tooltip);
+        set_information_price(item.price);
     }
     /// information function
     private void set_information_text(string input_text="")
@@ -159,6 +162,14 @@ public class Inventory : MonoBehaviour
         GameObject information_toolTip_gameObject = information_object.transform.GetChild(1).gameObject;
 
         information_toolTip_gameObject.GetComponent<Text>().text = input_text;
+    }
+
+    private void set_information_price(int input_text)
+    {
+        string text = input_text.ToString();
+        GameObject information_toolTip_gameObject = information_object.transform.GetChild(2).gameObject;
+        information_toolTip_gameObject.GetComponent<Text>().text = text;
+        
     }
 
 
