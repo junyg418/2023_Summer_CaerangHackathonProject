@@ -24,7 +24,7 @@ public class Collection : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.T))
-            color(0);
+            color(1);
         
     }
     public void color(int index)
