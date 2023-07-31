@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Collection : MonoBehaviour
 {
-    public Image[] image = new Image[4];
+    public Image[] image = new Image[6];
 
     //public Inventory inventory;
     
