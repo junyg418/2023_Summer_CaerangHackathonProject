@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class SliderValue : MonoBehaviour
 {
+    public ItemData item;
 
     Text valueText;
 
@@ -12,6 +13,7 @@ public class SliderValue : MonoBehaviour
     void Start()
     {
         valueText = GetComponent<Text>();
+        
     }
 
     // Update is called once per frame
@@ -19,4 +21,5 @@ public class SliderValue : MonoBehaviour
     {
         valueText.text = Mathf.RoundToInt(value)+"°³";
     }
+
 }
