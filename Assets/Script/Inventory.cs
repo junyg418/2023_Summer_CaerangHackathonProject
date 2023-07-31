@@ -16,6 +16,7 @@ public class Inventory : MonoBehaviour
     public ItemData[] _items;
     public GameObject information_object;
     public GameObject currentMoney_text_object;
+    public Slider cntslider;
 
     private int _current_money = 0;
     private SaveInventory saveInventory = new SaveInventory();
@@ -70,7 +71,7 @@ public class Inventory : MonoBehaviour
     }
     public void append_item_to_inventoryData(int item_id)
     {
-        collection.color(item_id);
+        
 
         if (save_data.ContainsKey(item_id))
         {
@@ -82,7 +83,9 @@ public class Inventory : MonoBehaviour
         else
             save_data[item_id] = 1;
 
-        
+        collection.color(item_id);
+
+
     }
     /// <summary>
     /// slot init function
@@ -149,6 +152,7 @@ public class Inventory : MonoBehaviour
         set_information_text(item.itemName);
         set_information_toolTip(item.Tooltip);
         set_information_price(item.price);
+        ItemCount(item.ID);
     }
     /// information function
     private void set_information_text(string input_text="")
@@ -178,6 +182,11 @@ public class Inventory : MonoBehaviour
     {
         Text text_componet = currentMoney_text_object.GetComponent<Text>();
         text_componet.text = string.Format("$ : {0, 6}", _current_money);
+    }
+
+    public void ItemCount(int id)
+    {
+        cntslider.maxValue = save_data[id];
     }
 }
 
