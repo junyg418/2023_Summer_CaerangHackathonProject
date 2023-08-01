@@ -9,6 +9,7 @@ using static UnityEngine.GraphicsBuffer;
 public class GetItemEvent : MonoBehaviour
 {
     public GameObject default_find_img;
+    public GameObject wifi_obj;
     //public SpriteRenderer spriterenderer;
     //public KeyCode interactionKey = KeyCode.Space;
 
@@ -44,6 +45,7 @@ public class GetItemEvent : MonoBehaviour
         if (!target.tag.Equals("GoPoint"))
             return;
 
+        wifi_obj.SetActive(false);
         default_find_img.SetActive(true);
     }
     private void OnTriggerStay2D(Collider2D collision)
@@ -65,6 +67,7 @@ public class GetItemEvent : MonoBehaviour
             return;
 
 
+        wifi_obj.SetActive(true);
         default_find_img.SetActive(false);
         canvas.enabled = false;
     }
