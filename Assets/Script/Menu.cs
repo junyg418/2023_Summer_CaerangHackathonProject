@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Menu : MonoBehaviour
 {
+    void Start()
+    {
+        menu.SetActive(false);
+    }
+
     public GameObject menu;
     public void Openmenu()
     {

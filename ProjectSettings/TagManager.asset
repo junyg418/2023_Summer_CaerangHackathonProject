@@ -8,6 +8,7 @@ TagManager:
   - Inventory_slot
   - Slider
   - skill_slot
+  - Slot
   layers:
   - Default
   - TransparentFX

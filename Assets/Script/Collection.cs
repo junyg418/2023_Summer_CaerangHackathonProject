@@ -10,13 +10,12 @@ public class Collection : MonoBehaviour
     //public Inventory inventory;
     
     void Start()
-    {
+    { 
         //inventory = FindObjectOfType<Inventory>();
 
         for (int i = 0; i < image.Length; i++)
         {
             image[i].color = new Color(0.2f, 0.2f, 0.2f, 1);
-
         }
     }
 
