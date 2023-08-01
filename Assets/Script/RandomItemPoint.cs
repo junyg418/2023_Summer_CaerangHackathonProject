@@ -9,8 +9,8 @@ public class RandomItemPoint : MonoBehaviour
     //private GameObject area;
     private BoxCollider2D area;
     public int count = 5;
+    public static List<Vector3> point_pos_array = new List<Vector3>();
 
-    // Start is called before the first frame update
     void Start()
     {
         area = GetComponent<BoxCollider2D>();
@@ -23,7 +23,6 @@ public class RandomItemPoint : MonoBehaviour
         //area.enabled = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         
@@ -46,7 +45,13 @@ public class RandomItemPoint : MonoBehaviour
         Vector3 spawnPos = GetRandomPosition();//랜덤위치함수
 
         GameObject instance = Instantiate(prefabs, spawnPos, Quaternion.identity);
+        set_point_pos_array(spawnPos);
     }
 
+    private List<Vector3> set_point_pos_array(Vector3 pos_data)
+    {
+        point_pos_array.Add(pos_data);
+        return point_pos_array;
+    }
 
 }
