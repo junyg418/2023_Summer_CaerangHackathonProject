@@ -142,14 +142,6 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    // information ���� function
-    /*
-    private void set_information()
-    {
-        set_information_text("아이템");
-        set_information_toolTip("아이템 정보");
-    }
-    */
     public void set_information(ItemData item)
     {
         set_information_text(item.itemName);
