@@ -197,8 +197,6 @@ public class Inventory : MonoBehaviour
         {
             save_data[item_data.ID] += -sell_count;
             _current_money += (sell_count * item_data.price);
-            
-            save_data = saveInventory.inventory_data; // 데이터 덮어쓰기
         }
         else
         {
