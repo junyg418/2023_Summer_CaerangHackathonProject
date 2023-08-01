@@ -18,7 +18,7 @@ public class Inventory : MonoBehaviour
     public GameObject currentMoney_text_object;
     public Slider cntslider;
 
-    private int _current_money = 500;
+    public int _current_money = 500;
     private SaveInventory saveInventory = new SaveInventory();
     private Dictionary<int, int> save_data = new Dictionary<int, int>();
     private GameObject[] objectsSlot;
@@ -173,7 +173,7 @@ public class Inventory : MonoBehaviour
 
 
     // money_text 초기화
-    private void set_currentMoney_text()
+    public void set_currentMoney_text()
     {
         Text text_componet = currentMoney_text_object.GetComponent<Text>();
         text_componet.text = string.Format("$ : {0, 6}", _current_money);

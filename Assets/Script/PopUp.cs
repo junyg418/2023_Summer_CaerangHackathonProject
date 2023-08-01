@@ -42,11 +42,29 @@ public class PopUp : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 popup.SetActive(true);
             }
         }
+
+        if (gameObject.CompareTag("skill_slot"))
+        {
+            if (IsColorEqual(GetComponent<Graphic>().color, targetColor))
+            {
+                Vector3 panelPosition = rectTransform.position;
+                panelPosition.y -= rectTransform.rect.height / 2f + popup.GetComponent<RectTransform>().rect.height / 2f + 10f;
+                popup.transform.position = panelPosition;
+
+
+                popup.SetActive(true);
+            }
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         if (gameObject.CompareTag("Slot"))
+        {
+            popup.SetActive(false);
+        }
+
+        if (gameObject.CompareTag("skill_slot"))
         {
             popup.SetActive(false);
         }
