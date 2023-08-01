@@ -625,6 +625,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   move_speed: 3
+  pauseTime: 30
 --- !u!1 &139650067
 GameObject:
   m_ObjectHideFlags: 0
@@ -2068,7 +2069,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c9a59e49b139c47a9a3e0f52e3f7a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 0}
 --- !u!1 &392781886
 GameObject:
   m_ObjectHideFlags: 0
@@ -5198,6 +5198,7 @@ MonoBehaviour:
   information_object: {fileID: 1186698146}
   currentMoney_text_object: {fileID: 787253645}
   cntslider: {fileID: 1220367432}
+  sellButton_obj: {fileID: 2109562433}
   collection: {fileID: 284823344}
 --- !u!1 &1109330097
 GameObject:
@@ -15055,7 +15056,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9f2bdb6514d3ec4b96acf4258a67b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 5
   animator: {fileID: 1579803709}
 --- !u!95 &1579803709
 Animator:
