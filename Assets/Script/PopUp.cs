@@ -48,7 +48,6 @@ public class PopUp : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         if (gameObject.CompareTag("Slot"))
         {
-            Debug.Log("Slot 태그를 가진 UI 오브젝트에서 마우스가 나갔습니다!");
             popup.SetActive(false);
         }
     }
