@@ -189,6 +189,7 @@ public class Inventory : MonoBehaviour
         cntslider.maxValue = save_data[item_id];
     }
 
+    
     private void OnClick_SellBtn(ItemData item_data)
     {
         int sell_count = SliderValue.sell_count;
@@ -196,6 +197,8 @@ public class Inventory : MonoBehaviour
         {
             save_data[item_data.ID] += -sell_count;
             _current_money += (sell_count * item_data.price);
+            
+            save_data = saveInventory.inventory_data; // 데이터 덮어쓰기
         }
         else
         {
