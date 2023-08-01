@@ -15,14 +15,14 @@ public class MetalDetactSkill : MonoBehaviour
     public Sprite sec_wifi;
     public Sprite max_wifi;
 
-    private Sprite sprite_obj;
+    private SpriteRenderer sprite_obj;
     private Vector3 goal_vector;
     private float min_dis;
 
     void Start()
     {
         min_dis = float.MaxValue;
-        sprite_obj = GetComponent<SpriteRenderer>().sprite;
+        sprite_obj = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -46,19 +46,19 @@ public class MetalDetactSkill : MonoBehaviour
         Debug.Log(goal_pos + " " + distance);
         if (distance < max_dis)
         {
-            sprite_obj = max_wifi;
+            sprite_obj.sprite = max_wifi;
         }
         else if(distance < sec_dis)
         {
-            sprite_obj = sec_wifi;
+            sprite_obj.sprite = sec_wifi;
         }
         else if (distance < first_dis)
         {
-            sprite_obj = first_wifi;
+            sprite_obj.sprite = first_wifi;
         }
         else
         {
-            sprite_obj = default_wifi;
+            sprite_obj.sprite = default_wifi;
         }
 
     }

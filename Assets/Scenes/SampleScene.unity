@@ -2402,14 +2402,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f42e2ef44d0d0248a747bd2ba114a86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  first_dis: 20
-  sec_dis: 10
-  max_dis: 5
+  first_dis: 2.7
+  sec_dis: 2
+  max_dis: 1.2
   default_wifi: {fileID: 21300000, guid: 63ec30905b3679a45a61e00e09cabc73, type: 3}
   first_wifi: {fileID: 21300000, guid: 9315862748545c848ba8056dedacae76, type: 3}
   sec_wifi: {fileID: 21300000, guid: 00c999f125e2ad748a746329cd2afd05, type: 3}
   max_wifi: {fileID: 21300000, guid: e1e133319f62c8847bf7ee688556d12c, type: 3}
-  gameObject: {fileID: 468766574}
 --- !u!1 &476078778
 GameObject:
   m_ObjectHideFlags: 0

@@ -65,14 +65,6 @@ public class Move : MonoBehaviour
 
         Vector2 moveVector = new Vector2(moveX, moveY);
         rigidbody2D.AddForce(moveVector);
-
-        Vector3 worldpos = Camera.main.WorldToViewportPoint(this.transform.position);
-        if (worldpos.x < 0f) worldpos.x = 0f;
-        if (worldpos.y < 0f) worldpos.y = 0f;
-        if (worldpos.x > 1f) worldpos.x = 1f;
-        if (worldpos.y > 1f) worldpos.y = 1f;
-        this.transform.position = Camera.main.ViewportToWorldPoint(worldpos);
-
     }
 }
 
