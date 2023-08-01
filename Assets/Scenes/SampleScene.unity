@@ -5302,6 +5302,7 @@ MonoBehaviour:
   information_object: {fileID: 1186698146}
   currentMoney_text_object: {fileID: 787253645}
   cntslider: {fileID: 1220367432}
+  sellButton_obj: {fileID: 2109562433}
   collection: {fileID: 284823344}
 --- !u!1 &1109330097
 GameObject:

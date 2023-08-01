@@ -43,7 +43,6 @@ public class MetalDetactSkill : MonoBehaviour
     private void set_wifi_img(Vector3 goal_pos)
     {
         float distance = Vector3.Distance(transform.position, goal_pos);
-        Debug.Log(goal_pos + " " + distance);
         if (distance < max_dis)
         {
             sprite_obj.sprite = max_wifi;

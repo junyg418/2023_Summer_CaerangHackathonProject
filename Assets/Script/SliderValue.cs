@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class SliderValue : MonoBehaviour
 {
     Text valueText;
+    public static int sell_count = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +19,7 @@ public class SliderValue : MonoBehaviour
     public void valueUpdate(float value)
     {
         valueText.text = Mathf.RoundToInt(value)+"°³";
+        sell_count = Mathf.RoundToInt(value);
     }
 
 }

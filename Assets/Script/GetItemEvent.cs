@@ -101,5 +101,3 @@ public class GetItemEvent : MonoBehaviour
         RandomItemPoint.point_pos_array.Remove(pos);
     }
 }
-
-

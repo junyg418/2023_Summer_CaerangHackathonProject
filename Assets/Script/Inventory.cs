@@ -17,16 +17,20 @@ public class Inventory : MonoBehaviour
     public GameObject information_object;
     public GameObject currentMoney_text_object;
     public Slider cntslider;
+    public GameObject sellButton_obj;
 
     private int _current_money = 500;
     private SaveInventory saveInventory = new SaveInventory();
     private Dictionary<int, int> save_data = new Dictionary<int, int>();
     private GameObject[] objectsSlot;
+    private Button sell_button;
 
     public Collection collection;
     private void Awake()
     {
         objectsSlot = GameObject.FindGameObjectsWithTag("Inventory_slot"); // slot 배열
+        sell_button = sellButton_obj.GetComponent<Button>();
+        
     }
     void Start()
     {
@@ -108,6 +112,7 @@ public class Inventory : MonoBehaviour
             set_slot_img(current_slot, current_item_id);
             set_slot_button(current_slot, current_item_id);
         }
+        set_currentMoney_text();
     }
     /// <summary>
     /// slot 아이탬 개수 초기화 function
@@ -148,6 +153,7 @@ public class Inventory : MonoBehaviour
         set_information_toolTip(item.Tooltip);
         set_information_price(item.price);
         ItemCount(item.ID);
+        sell_button.onClick.AddListener(() => OnCLick_SellBtn(item));
     }
     /// information function
     private void set_information_text(string input_text="")
@@ -179,9 +185,25 @@ public class Inventory : MonoBehaviour
         text_componet.text = string.Format("$ : {0, 6}", _current_money);
     }
 
-    public void ItemCount(int id)
+    public void ItemCount(int item_id)
     {
-        cntslider.maxValue = save_data[id];
+        cntslider.maxValue = save_data[item_id];
+    }
+
+    // sell button 관련
+    private void OnCLick_SellBtn(ItemData item_data)
+    {
+        int sell_count = SliderValue.sell_count;
+        if (sell_count <= save_data[item_data.ID])
+        {
+            save_data[item_data.ID] += -sell_count;
+            _current_money += (sell_count * item_data.price);
+        }
+        else
+        {
+            Debug.Log("개수 부족");
+        }
+        init_slot();
     }
 }
 
