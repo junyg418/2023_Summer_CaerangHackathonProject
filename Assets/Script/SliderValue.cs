@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class SliderValue : MonoBehaviour
 {
-    public ItemData item;
-
     Text valueText;
 
     // Start is called before the first frame update
