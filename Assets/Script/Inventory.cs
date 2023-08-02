@@ -61,17 +61,15 @@ public class Inventory : MonoBehaviour
     {
         int randomInt = Random.Range(1, 101);
 
-        // ���ٱ� 50%
-        if (1 <= randomInt && randomInt < 50)
+        if (1 <= randomInt && randomInt < 30)
             append_item_to_inventoryData(1);
-        // ���� 30%
-        else if (50 <= randomInt && randomInt < 80)
+        else if (30 <= randomInt && randomInt < 55)
             append_item_to_inventoryData(2);
-        else if (80 <= randomInt && randomInt < 90)
+        else if (55 <= randomInt && randomInt < 75)
             append_item_to_inventoryData(3);
-        else if (90 <= randomInt && randomInt < 95)
+        else if (75 <= randomInt && randomInt < 90)
             append_item_to_inventoryData(4);
-        else if (95 <= randomInt && randomInt < 101)
+        else if (90 <= randomInt && randomInt < 101)
             append_item_to_inventoryData(5);
 
         init_slot();
