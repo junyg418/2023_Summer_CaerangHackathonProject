@@ -707,6 +707,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   move_speed: 3
   pauseTime: 30
+--- !u!114 &138297363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138297359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c82d29c6841a2e43b58754a960d1738, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  count: 0
+  gameobject: {fileID: 138297359}
+  popup: {fileID: 477245039}
+  inventory: {fileID: 1104619208}
 --- !u!1 &139650067
 GameObject:
   m_ObjectHideFlags: 0
@@ -5648,6 +5664,7 @@ MonoBehaviour:
   currentMoney_text_object: {fileID: 787253645}
   cntslider: {fileID: 1220367432}
   sellButton_obj: {fileID: 2109562433}
+  _current_money: 500
   collection: {fileID: 284823344}
 --- !u!1 &1109330097
 GameObject:
@@ -15752,8 +15769,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9f2bdb6514d3ec4b96acf4258a67b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 7
-
   animator: {fileID: 1579803709}
 --- !u!95 &1579803709
 Animator:
@@ -15860,13 +15875,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   default_find_img: {fileID: 1258504258}
-  
-  
-  
-  
-  
-  
- _obj: {fileID: 468766574}
+  wifi_obj: {fileID: 468766574}
   slider: {fileID: 1928357685}
   canvas: {fileID: 392781890}
   inventory: {fileID: 1104619208}
