@@ -19,7 +19,7 @@ public class Inventory : MonoBehaviour
     public Slider cntslider;
     public GameObject sellButton_obj;
 
-    private int _current_money = 500;
+    public int _current_money = 500;
     private SaveInventory saveInventory = new SaveInventory();
     private Dictionary<int, int> save_data = new Dictionary<int, int>();
     private GameObject[] objectsSlot;
@@ -30,7 +30,7 @@ public class Inventory : MonoBehaviour
     {
         objectsSlot = GameObject.FindGameObjectsWithTag("Inventory_slot"); // slot 배열
         sell_button = sellButton_obj.GetComponent<Button>();
-        
+
     }
     void Start()
     {
@@ -153,7 +153,9 @@ public class Inventory : MonoBehaviour
         set_information_toolTip(item.Tooltip);
         set_information_price(item.price);
         ItemCount(item.ID);
+
         sell_button.onClick.AddListener(() => OnCLick_SellBtn(item));
+
     }
     /// information function
     private void set_information_text(string input_text="")
@@ -179,7 +181,7 @@ public class Inventory : MonoBehaviour
 
 
     // money_text 초기화
-    private void set_currentMoney_text()
+    public void set_currentMoney_text()
     {
         Text text_componet = currentMoney_text_object.GetComponent<Text>();
         text_componet.text = string.Format("$ : {0, 6}", _current_money);
@@ -190,18 +192,25 @@ public class Inventory : MonoBehaviour
         cntslider.maxValue = save_data[item_id];
     }
 
+
     // sell button 관련
     private void OnCLick_SellBtn(ItemData item_data)
     {
         int sell_count = SliderValue.sell_count;
         if (sell_count <= save_data[item_data.ID])
+
+    
+  
+
         {
             save_data[item_data.ID] += -sell_count;
             _current_money += (sell_count * item_data.price);
         }
         else
         {
-            Debug.Log("개수 부족");
+
+            Debug.Log("아이템 개수 부족");
+
         }
         init_slot();
     }

@@ -18,7 +18,7 @@ public class SliderValue : MonoBehaviour
     // Update is called once per frame
     public void valueUpdate(float value)
     {
-        valueText.text = Mathf.RoundToInt(value)+"°³";
+        valueText.text = Mathf.RoundToInt(value)+"Â°Â³";
         sell_count = Mathf.RoundToInt(value);
     }
 

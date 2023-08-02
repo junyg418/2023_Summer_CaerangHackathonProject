@@ -15,5 +15,5 @@ MonoBehaviour:
   ID: 4
   itemName: "\uACF0\uC778\uD615"
   Tooltip: "\uC640! \uACF0\uC778\uD615\uC774\uB2E4!"
-  price: 300
+  price: 700
   itemImage: {fileID: 21300000, guid: bac278a536d054d52bbac93ca523c17b, type: 3}

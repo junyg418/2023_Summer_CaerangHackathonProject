@@ -6,8 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Move : MonoBehaviour
 {
-    Vector2 position;
-    public float Speed = 1;
+    float Speed = 5;
 
     public Animator animator;
 
@@ -15,7 +14,6 @@ public class Move : MonoBehaviour
     void Start()
     {
         rigidbody2D = GetComponent<Rigidbody2D>(); 
-        position = transform.position;
     }
 
     // Update is called once per frame
@@ -23,6 +21,7 @@ public class Move : MonoBehaviour
     {
         float moveX = 0;
         float moveY = 0;
+
         if (Input.GetKey(KeyCode.A))
         {
             moveX -= Speed;
@@ -65,6 +64,7 @@ public class Move : MonoBehaviour
 
         Vector2 moveVector = new Vector2(moveX, moveY);
         rigidbody2D.AddForce(moveVector);
+
     }
 }
 
