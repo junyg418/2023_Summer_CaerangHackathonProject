@@ -39,13 +39,16 @@ public class GetItemEvent : MonoBehaviour
         }
     }
 
+    public SkillBtn skill;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject target = collision.gameObject;
         if (!target.tag.Equals("GoPoint"))
             return;
 
-        wifi_obj.SetActive(false);
+        if(skill.count == 1)
+            wifi_obj.SetActive(false);
+
         default_find_img.SetActive(true);
     }
     private void OnTriggerStay2D(Collider2D collision)
@@ -66,8 +69,9 @@ public class GetItemEvent : MonoBehaviour
         if (!target.tag.Equals("GoPoint"))
             return;
 
+        if(skill.count == 1)
+            wifi_obj.SetActive(true);
 
-        wifi_obj.SetActive(true);
         default_find_img.SetActive(false);
         canvas.enabled = false;
     }

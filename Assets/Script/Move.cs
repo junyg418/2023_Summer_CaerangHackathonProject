@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[RequireComponent(typeof(Rigidbody2D))]
+//[RequireComponent(typeof(Rigidbody2D))]
 public class Move : MonoBehaviour
 {
     float Speed = 7;
 
     public Animator animator;
 
-    private Rigidbody2D rigidbody2D;
+    private Rigidbody2D _rigidbody2D;
     void Start()
     {
-        rigidbody2D = GetComponent<Rigidbody2D>(); 
+        _rigidbody2D = GetComponent<Rigidbody2D>(); 
     }
 
     // Update is called once per frame
@@ -63,7 +63,7 @@ public class Move : MonoBehaviour
         }
 
         Vector2 moveVector = new Vector2(moveX, moveY);
-        rigidbody2D.AddForce(moveVector);
+        _rigidbody2D.AddForce(moveVector);
 
     }
 }

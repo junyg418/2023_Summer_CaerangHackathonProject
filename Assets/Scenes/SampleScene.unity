@@ -15993,6 +15993,7 @@ MonoBehaviour:
   canvas: {fileID: 392781890}
   inventory: {fileID: 1104619208}
   randomItemPoint: {fileID: 1338460363}
+  skill: {fileID: 468766578}
 --- !u!61 &1579803713
 BoxCollider2D:
   m_ObjectHideFlags: 0
