@@ -9,6 +9,8 @@ public class SkillBtn : MonoBehaviour
 
     public GameObject popup;
 
+    public int price;
+
     public Inventory inventory;
     // Start is called before the first frame update
     void Start()
@@ -29,12 +31,13 @@ public class SkillBtn : MonoBehaviour
     {
         if (count == 0)
         {
-            if (inventory._current_money >= 800)
+            if (inventory._current_money >= price)
             {
-                inventory._current_money -= 800;
+                inventory._current_money -= price;
                 inventory.set_currentMoney_text();
                 count++;
             }
+
             else
             {
                 popup.SetActive(true);

@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Move : MonoBehaviour
 {
-    float Speed = 5;
+    float Speed = 7;
 
     public Animator animator;
 
