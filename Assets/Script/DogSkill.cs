@@ -34,7 +34,6 @@ public class DogSkill : MonoBehaviour
             {
                 passedTime = 0f;
                 updatePaused = false;
-
             }
             return;
         }

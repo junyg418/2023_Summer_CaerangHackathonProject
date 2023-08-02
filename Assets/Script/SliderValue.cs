@@ -7,6 +7,7 @@ public class SliderValue : MonoBehaviour
 {
     Text valueText;
     public static int sell_count = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +18,7 @@ public class SliderValue : MonoBehaviour
     // Update is called once per frame
     public void valueUpdate(float value)
     {
-        valueText.text = Mathf.RoundToInt(value)+"°³";
+        valueText.text = Mathf.RoundToInt(value)+"Â°Â³";
         sell_count = Mathf.RoundToInt(value);
     }
 
